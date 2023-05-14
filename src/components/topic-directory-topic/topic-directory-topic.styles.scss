@@ -1,0 +1,11 @@
+h1, h2, h3, h4, h5, h6, p{
+    color: orange;
+}
+
+.topic-directory-container{
+    margin-bottom: 5rem;
+    .topic-directory-topic{
+        width: 32vw;
+        margin-top: 5rem;
+    }
+}
