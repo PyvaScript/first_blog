@@ -24,6 +24,7 @@ provider.setCustomParameters({
 
 export const auth=getAuth();
 export const signInWithGooglePopup=()=> signInWithPopup(auth, provider);
+export const signInWithGoogleRedirect=()=>signInWithRedirect(auth, provider);
 //db is a singleton which points directly to the database in our console
 export const db=getFirestore();
 export const createUserDocumentFromAuth=async(userAuth)=>{

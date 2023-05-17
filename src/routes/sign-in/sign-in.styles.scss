@@ -1,0 +1,27 @@
+.colorBlack{
+    color: black;
+}
+
+.sign_in_options{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.sign_in_options input[type='button']{
+    background-color: white;
+    border: none;
+    font-size: 1.2rem;
+    color: orange;
+}
+
+.sign_in_options div.google_options{
+    height: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sign_in_options div.google_options input{
+    font-weight: bold;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
