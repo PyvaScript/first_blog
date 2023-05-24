@@ -9,7 +9,7 @@ const SignIn=()=>{
         async function first_sign_in_call(){
             console.log("This is working");
             const response=await getRedirectResult(auth);
-            console.log(response);
+            console.log("first_sign_in_call response - ",response);
             const userDocRef=await createUserDocumentFromAuth(response.user);
         }
         first_sign_in_call()
