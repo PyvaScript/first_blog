@@ -1,0 +1,13 @@
+.sign_up_form_input_group {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    label {
+
+    }
+    .form_input {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

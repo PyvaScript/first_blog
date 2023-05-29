@@ -1,5 +1,7 @@
+import { useState } from "react";
 import "./sign-up-form.styles.scss";
-import { useState } from 'react';
+import Button from "../button/button.component.jsx";
+import FormInput from "../form-input/form-input.component.jsx";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 
 const defaultFormFields={
@@ -20,51 +22,72 @@ const SignUpForm=()=>{
     const handleSubmit=async(event)=>{
         event.preventDefault();
         if(password!==confirmPassword){
-            alert('Passwords do not match.');
+            alert("Passwords do not match.");
             return;
         };
         try{
-            const { user }=await createAuthUserWithEmailAndPassword(email, password);
-            await createUserDocumentFromAuth(user, { displayName });
+            const { user }=await createAuthUserWithEmailAndPassword(email,password);
+            await createUserDocumentFromAuth(user,{ displayName });
             resetFormFields();
         }catch(error){
             if(error.code==="auth/email-already-in-use"){
-                alert("The email provided is already in use");
+                alert("The email provided is already associated with an account");
             }else{
                 console.error("User creation encountered an error - ",error);
             }
         };
     };
 
-    /*
-    const handleSubmit=async(event)=>{
-        event.preventDefault();
-        if(password!==confirmPassword){
-        return;
-        const newUserAuth=createAuthUserWithEmailAndPassword(email, password);
-        console.log("newUserAuth - ",newUserAuth);
-        createUserDocumentFromAuth(newUserAuth);   
-    }
-    */
-    
     const updateField=(event)=>{
         const { name, value }=event.target;
         setFormFields({ ...formFields, [name]:value })
     };
 
     return (
-        <div>
-            <h1 className="sign_up_form_heading">Sign up with your email and password</h1>
+        <div className="sign_up_container">
+            <h2>Don't have an account?</h2>
+            <span className="sign_upForm_subheading">Sign up with your email and password</span>
             <form className="sign_up_form" onSubmit={ handleSubmit }>
-                <label>Display Name</label>
-                <input type="text" onChange={updateField} name="displayName" value={ displayName } required></input>
-                <label>Email</label>
-                <input type="email" onChange={updateField} name="email" value={ email } required></input>
-                <label>Password</label>
-                <input type="password" onChange={updateField} name="password" value={ password } minLength="6" required></input>
-                <label>Confirm Password</label>
-                <input type="password" onChange={updateField} name="confirmPassword" value={ confirmPassword } minLength="6" required></input>
-                <input className="sign_up_form_submit" type="submit" value="Sign up"></input>
+                <FormInput 
+                    label="Display Name"
+                    type="text"
+                    name="displayName"
+                    onChange={ updateField }
+                    value={ displayName }
+                    required
+                />
+                <FormInput
+                    label="Email address"
+                    type="email"
+                    name="email"
+                    onChange={ updateField }
+                    value={ email }
+                    required
+                />
+                <FormInput
+                    label="Password"
+                    type="password"
+                    name="password"
+                    minLength="6"
+                    onChange={ updateField }
+                    value={ password }
+                    required
+                />
+                <FormInput
+                    label="Confirm Password"
+                    type="password"
+                    name="confirmPassword"
+                    minLength="6"
+                    onChange={ updateField }
+                    value={ confirmPassword }
+                    required
+                />
+                <Button button_type="signUpFormSubmit" type="submit">Sign Up</Button>
+                <Button button_type="signUpFormReset" type="button" onClick={ resetFormFields }>Reset Form Fields</Button>
+                {/*
+                <input className="sign_up_form_submit" type="submit" value="Sign Up"/>
+                <input className="sign_up_form_submit" type="button" value="ResetForm" onClick={ resetFormFields }/>
+                */}
             </form>
         </div>
     );
