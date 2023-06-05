@@ -1,5 +1,9 @@
+.sign_up_container{
+    width: 40%;
+}
+
 .sign_up_form{
-    display:flex;
+    display: flex;
     flex-direction: column;
     label {
         font-weight: bold;
@@ -17,7 +21,7 @@
     };
 };
 
-.sign_up_form_heading{
+.sign_up_form_subheading{
     color: black;
 };
 

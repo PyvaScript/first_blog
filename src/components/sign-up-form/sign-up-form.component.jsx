@@ -46,7 +46,7 @@ const SignUpForm=()=>{
     return (
         <div className="sign_up_container">
             <h2>Don't have an account?</h2>
-            <span className="sign_upForm_subheading">Sign up with your email and password</span>
+            <span className="sign_up_form_subheading">Sign up with your email and password</span>
             <form className="sign_up_form" onSubmit={ handleSubmit }>
                 <FormInput 
                     label="Display Name"
@@ -83,11 +83,7 @@ const SignUpForm=()=>{
                     required
                 />
                 <Button button_type="signUpFormSubmit" type="submit">Sign Up</Button>
-                <Button button_type="signUpFormReset" type="button" onClick={ resetFormFields }>Reset Form Fields</Button>
-                {/*
-                <input className="sign_up_form_submit" type="submit" value="Sign Up"/>
-                <input className="sign_up_form_submit" type="button" value="ResetForm" onClick={ resetFormFields }/>
-                */}
+                <Button button_type="signUpFormReset" type="button" onClick={ resetFormFields }>Reset</Button>
             </form>
         </div>
     );

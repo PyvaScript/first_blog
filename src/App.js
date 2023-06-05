@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from "./routes/home/home.component.jsx";
-import SignIn from "./routes/sign-in/sign-in.component.jsx";
+import Authentication from "./routes/authentication/authentication.component.jsx";
 import Nav from "./routes/navigation/navigation.component.jsx";
 import Ransomware from "./routes/ransomware/ransomware.component.jsx";
 import DeepFakeTechnology from "./routes/deepfake/deepfake.technology.component.jsx";
@@ -27,7 +27,7 @@ const App=()=>{
         <Route path="/security/zero-trust" element={<ZeroTrustSecurity/>}/>
         <Route path="/deepfake/technology" element={<DeepFakeTechnology/>}/>
         <Route path="/hacking/human/mind" element={<HackingTheHumanMind/>}/>
-        <Route path="/sign-in" element={<SignIn/>}/>
+        <Route path="/authentication" element={<Authentication/>}/>
       </Route>
     </Routes>
   )

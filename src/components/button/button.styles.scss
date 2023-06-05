@@ -1,22 +1,33 @@
-.button_container {
-    border: 2px solid blue;
+.google-sign-in{
+    background-color: #0077E3;
+    color: white;
+    margin-top: 2rem;
+    border: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+
+    &:hover{
+        color: black;
+    }
 }
 .sign_up_form_submit{
+    width: 100%;
     color: orange;
     background-color: black;
     font-weight: bold;
     font-size: 1.2rem;
-    padding: 0.5rem;
-    margin-top: 2rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin:2rem auto 0 auto;
     border: none;
     border-radius: 0.25rem;
 }
 .sign_up_form_reset{
+    width: 100%;
     color: red;
     font-weight: bold;
     font-size: 1.2rem;
-    padding: 0.5rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 2rem auto 2rem auto;
     border: none;
 }

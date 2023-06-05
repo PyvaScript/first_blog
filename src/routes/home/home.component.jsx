@@ -50,7 +50,7 @@ const Home=()=>{
   ]);
   return (
     <div style={{ textAlign:'center' }}>
-      <Link to="/sign-in" style={{ textDecoration:'none',color:"orange"}}>Sign In</Link> 
+      <Link to="/authentication" style={{ textDecoration:'none',color:"orange"}}>Sign In</Link> 
       <Outlet/>
       <TopicDirectory articleTopics={ topics}/>
     </div>
