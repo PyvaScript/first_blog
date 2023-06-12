@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const Home=()=>{
-  const [topics,setTopics]=useState([
+  const [topics, setTopics]=useState([
     {
       key:1,
       title:'Deepfake Technology',
@@ -50,7 +50,6 @@ const Home=()=>{
   ]);
   return (
     <div style={{ textAlign:'center' }}>
-      <Link to="/authentication" style={{ textDecoration:'none',color:"orange"}}>Sign In</Link> 
       <Outlet/>
       <TopicDirectory articleTopics={ topics}/>
     </div>
