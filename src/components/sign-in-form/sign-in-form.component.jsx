@@ -1,8 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import Button from "../button/button.component.jsx";
 import FormInput from "../form-input/form-input.component.jsx";
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
-import { UserContext } from "../../contexts/user.context.jsx";
+import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 
 const defaultFormFields={
     email:'',
@@ -13,15 +12,13 @@ const SignInForm=()=>{
     const [formFields,setFormFields]=useState(defaultFormFields);
     const { email, password }=formFields;
 
-    const { setCurrentUser }=useContext(UserContext);
-
     const resetFormFields=()=>{
         setFormFields(defaultFormFields);
+        document.activeElement.blur();
     };
 
     const signInWithGoogle=async()=>{
-        const response=await signInWithGooglePopup();
-        await createUserDocumentFromAuth(response.user);
+        await signInWithGooglePopup();
     };
 
     const handleSubmit=async(event)=>{
@@ -29,7 +26,6 @@ const SignInForm=()=>{
         try{
             const response=await signInAuthUserWithEmailAndPassword(email, password);
             resetFormFields();
-            setCurrentUser(response.user);
         }catch(error){
             if(error.code==="auth/wrong-password"||error.code==="auth/user-not-found"){
                 alert("Incorrect login details");

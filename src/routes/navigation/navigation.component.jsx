@@ -4,18 +4,8 @@ import { UserContext } from '../../contexts/user.context.jsx';
 import { SignOutUser } from '../../utils/firebase/firebase.utils.js';
 
 const Nav=()=>{
-    const { currentUser, setCurrentUser }=useContext(UserContext);
-    console.log("CURRENTUSER IN NAVIGATION COMPONENT");
-    const signOutHandler=async()=>{
-        await SignOutUser();
-        setCurrentUser(null);
-    }
-    try{
-        console.log(currentUser.email);
-    }catch(e){
-        console.error(e);
-    };
-    console.log("End response");
+    const { currentUser }=useContext(UserContext);
+    const signOutHandler=async()=>{await SignOutUser()}
     return (
         <div style={{ textAlign:'center' }}>
             <h1><Link to="/" style={{ textDecoration:"none",color:'orange' }}>Welcome to the Orange Blog</Link></h1>
