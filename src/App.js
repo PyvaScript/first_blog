@@ -8,11 +8,8 @@ import QuantumComputing from "./routes/quantum-computing/quantum.computing.compo
 import SocialEngineering from "./routes/engineering/social/social.engineering.component.jsx";
 import ZeroTrustSecurity from "./routes/security/zero-trust/zero-trust-security.component.jsx";
 import HackingTheHumanMind from "./routes/hacking/human/mind/hacking-the-human-mind.component.jsx";
+import Shop from "./routes/shop/shop.component.jsx";
 import "./App.css";
-
-const Shop=()=>{
-  return <h1>This is the shop component</h1>;
-}
 
 
 const App=()=>{
