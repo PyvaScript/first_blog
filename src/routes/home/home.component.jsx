@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import TopicDirectory from "../../components/topic-directory/topic-directory.component.jsx";
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import "./home.styles.scss";
 
 const Home=()=>{
   const [topics, setTopics]=useState([
@@ -49,7 +50,7 @@ const Home=()=>{
     },
   ]);
   return (
-    <div style={{ textAlign:'center' }}>
+    <div className="text-center">
       <Outlet/>
       <TopicDirectory articleTopics={ topics}/>
     </div>

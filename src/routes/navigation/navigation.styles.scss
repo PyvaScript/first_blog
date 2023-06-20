@@ -1,3 +1,35 @@
-.colorBlack{
-    color: black;
+.nav_container{
+    display: flex;
+
+    .nav_item{
+        width: 33vw;
+    }
+
+    .nav_intro{
+
+        .link_to_main{
+            color: orange;
+            text-decoration: none;
+        }
+
+        .nav_sub_heading{}
+    }
+    
+    .personal{
+        display: flex;
+        justify-content: flex-end;
+        padding: 0.5rem 2rem 0 3rem;
+        font-weight: bold;
+
+        .shop{
+        }
+
+        .authentication, a{
+            color: orange;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        .cart{}
+    }
 }

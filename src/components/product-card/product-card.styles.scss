@@ -5,7 +5,6 @@
     height: 350px;
     align-items: center;
     position: relative;
-    border: 2px solid blue;
 
     img {
         width: 100%;
@@ -39,11 +38,13 @@
         display: flex;
         justify-content: space-between;
         font-size: 18px;
+        padding: 0 1rem;
 
         .name {
             width: 90%;
             margin-bottom: 15px;
             z-index: 7;
+            text-align: left;
         }
 
         .price {
