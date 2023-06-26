@@ -9,22 +9,24 @@ import SocialEngineering from "./routes/engineering/social/social.engineering.co
 import ZeroTrustSecurity from "./routes/security/zero-trust/zero-trust-security.component.jsx";
 import HackingTheHumanMind from "./routes/hacking/human/mind/hacking-the-human-mind.component.jsx";
 import Shop from "./routes/shop/shop.component.jsx";
+import Checkout from "./routes/checkout/checkout.component.jsx";
 import "./App.css";
 
 
 const App=()=>{
   return (
     <Routes>
-      <Route path="/" element={ <Nav/> }>
-        <Route index element={ <Home />}/>
-        <Route path="/shop" element={<Shop/>}/>
-        <Route path="/ransomware" element={<Ransomware/>}/>
-        <Route path="/quantum-computing" element={<QuantumComputing/>}/>
-        <Route path="/engineering/social" element={<SocialEngineering/>}/>
-        <Route path="/security/zero-trust" element={<ZeroTrustSecurity/>}/>
-        <Route path="/deepfake/technology" element={<DeepFakeTechnology/>}/>
-        <Route path="/hacking/human/mind" element={<HackingTheHumanMind/>}/>
-        <Route path="/authentication" element={<Authentication/>}/>
+      <Route path="/" element={ <Nav /> } >
+        <Route index element={ <Home /> } />
+        <Route path="/shop" element={ <Shop /> } />
+        <Route path="/ransomware" element={ <Ransomware /> } />
+        <Route path="/quantum-computing" element={ <QuantumComputing /> } />
+        <Route path="/engineering/social" element={ <SocialEngineering /> } />
+        <Route path="/security/zero-trust" element={ <ZeroTrustSecurity /> } />
+        <Route path="/deepfake/technology" element={ <DeepFakeTechnology /> } />
+        <Route path="/hacking/human/mind" element={ <HackingTheHumanMind /> } />
+        <Route path="/authentication" element={ <Authentication /> } />
+        <Route path="/checkout" element={ <Checkout /> } />
       </Route>
     </Routes>
   )

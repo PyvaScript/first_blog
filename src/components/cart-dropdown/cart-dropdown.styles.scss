@@ -25,5 +25,10 @@
 
     button{
         margin-top: auto;
+
+        .checkoutLink {
+            text-decoration: none;
+            color: orange;
+        }
     }
 }

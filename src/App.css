@@ -1,5 +1,6 @@
-*{
+* {
   box-sizing: border-box;
+  cursor: default;
 }
 
 .App {
@@ -8,4 +9,12 @@
 
 .topic-list-topic{
   margin-bottom: 5rem;
+}
+
+a {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }
