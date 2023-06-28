@@ -19,7 +19,13 @@ const CheckoutProduct=({ product })=>{
             <div className="text-container">
                 <span className="text-container-inner">
                     <span className="quantity-adjust-arrow" onClick={ ()=>{ addCartItem( product ) } }>↑</span>
+                    {
+                        //<span onClick={ ()=> addCartItem( product)}>&#10094;</span>
+                    }
                     <span className="quantity">{ quantity }</span>
+                    {
+                        //<span onClick={ ()=> reduceCartItem(product)}>&#10095;</span>
+                    }
                     <span className="quantity-adjust-arrow" onClick={ ()=>{ reduceCartItem( product) } }>↓</span>
                 </span>
             </div>
@@ -27,7 +33,7 @@ const CheckoutProduct=({ product })=>{
                 <span className="text-container-inner">{ price }</span>
             </div>
             <div className="text-container">
-                <span className="text-container-inner"><span className="remove-button" onClick={ ()=>{ removeCartItem(product) } }>X</span></span>
+                <span className="text-container-inner"><span className="remove-button" onClick={ ()=>{ removeCartItem(product) } }>&#10005;</span></span>
             </div>
         </div>
         </>
