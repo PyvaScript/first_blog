@@ -1,4 +1,4 @@
-const PRODUCT_DATA=[
+const PRODUCTS=[
     {
         title: 'anti-virus',
         items:[
@@ -6,19 +6,19 @@ const PRODUCT_DATA=[
                 id:1,
                 name:"Norton+",
                 imageURL:"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRzqGJKJYh8x_SfuPvtlWrH_TX2guLkFFgZE3V70krogDHGQmJ2HSUK91c-0DxKhaWoveQJAjIfwZE80aEy5VcaTIgWDDb65UMaA0gABNhrrGYpP5EHjX4-izwrLyMTsTbqk0U&usqp=CAc",
-                price:70
+                price:70,
             },
             {
                 id:2,
                 name:"McAfee+",
                 imageURL:"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRQpemeeVRok3R6wXTFUinQ33CZ_q0Gy24hRpQVgWh-MN_oBl-r3zUb-n57Hiltv-74NcFNouX1jNfRA4agezaVwv8D-Wseg2aE_qISTqxEjqt090VlKIj9JQ&usqp=CAc",
-                price:70
+                price:70,
             },
             {
                 id:3,
                 name:"Bitdefender+",
                 imageURL:"https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRrYm3VYr0EdkCwOoaa-DkGEx0_0V2tVm0iFY6jaBTi27ve02C1ayGXh6P5ieuodbnO4dan4PXF-FtGk48dl3Ek0LlnJ3M37DjLacDDRiyxG6mUJpxTVWcu&usqp=CAc",
-                price:48
+                price:48,
             }
         ]
     },
@@ -30,13 +30,13 @@ const PRODUCT_DATA=[
                 name:"Microsoft Surface Arc",
                 imageURL:"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQG0Ha3QOwWS2X_2vgkOezgHZWykfdR5CQdwjEGgomTJo9p9AboSY9GiRctbHXyA66h6a5jZK_xoUVLs-zqHDppxnD6LCzEq04k_ROKZYb2oaKC4iHNy8pD&usqp=CAc",
                 price:160
-            }
+            },
             {
                 id:5,
                 name:"Microsoft Surface Mobile",
                 imageURL:"https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTalxDKg654alqjYCESzQ4tR25_z_oX9ApsSi9WLYF5Dno3JghT8CKH2QwAr6bMBWtIByZdkrS0ghkbV0oWV7U4w_GRbC2_GmjO1bs1YjRfkaOLSZxHEAqAG7M8epNdBsJ9&usqp=CAc",
                 price:70
-            }
+            },
             {
                 id:6,
                 name:"Razor Naga Trinity",
@@ -53,13 +53,13 @@ const PRODUCT_DATA=[
                 name:"Astronaut",
                 imageURL:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTVowdwWpAz3gW6Yn3NBL4EdnsucKKDaNhrO2R1XGRtHD65Noe5OydYZXrCU06BFZdBf9Vf3OzqC01NLDdGR9-5iw9i0xKZ44R6_nFFYxkM3Uc1T8bjcrdjOw&usqp=CAE",
                 price:30
-            }
+            },
             {
                 id:8,
                 name:"Dark Dragon",
                 imageURL:"https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQsNYW134vDdvFflczXZsID8rs2le8m-O--RM6g4z5UvWckJtzyuxaPRvY5XX_IDd3jDh2XBF5zwQxaRcTfK3Ou9jQrZZY1wJf_ImKUHKeRz6VlzSswuueltw&usqp=CAE",
                 price:32
-            }
+            },
             {
                 id:9,
                 name:"Ailrinni",
@@ -76,13 +76,13 @@ const PRODUCT_DATA=[
                 name:"Razor Ornata v3",
                 imageURL:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRODunPeR6Su30jMur1LPZwEtn90qVf7qMR7sPGy2KzEqITTfrwfsjze3ZzwYRgzWtVqP_QPlUVEc31fyQslhuFM0C2EbrTXP8VlQAfmYzDWo4TIXTumVHP2Q&usqp=CAE",
                 price:120
-            }
+            },
             {
                 id:11,
                 name:"Kmart Mechanical",
                 imageURL:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQA5S3fi_eLKUi2sjtNgqJBNSyESXsZze1A6gMeD7MZWgdu_OIM71Et9brbKwwlSCNHL0rDsS5orolyF4U2fSHIc_qa4zfeBBfoNS9vyanbqxrJlzJl_ObBGg&usqp=CAE",
                 price:40
-            }
+            },
             {
                 id:12,
                 name:"Embedded Stainless",
@@ -99,13 +99,13 @@ const PRODUCT_DATA=[
                 name:"LG Ultrawide",
                 imageURL:"https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcS2LxFbP96AhZtCGwjBmTWLCbvooV9ZmUzGYHuwc4jz3t-qNso0yckwOA_nGJ4lQ7tHe7FtuQPHbVwaYUIbrMNyCaxlJxKhOpOeWtFLhXU&usqp=CAE",
                 price:600
-            }
+            },
             {
                 id:14,
                 name:"Mobile Pixels Trio Max",
                 imageURL:"https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTEm0TsIgDB6hVHV5x5onLt3yu1TCbmoFDWFaDmueIFyS9jy5r1VxSZUCvINFHUM4PDlS6_ecSr7D4aBXjJ3E9wZUT7O97xBlZ6sMM3jqo",
                 price:400
-            }
+            },
             {
                 id:15,
                 name:"SOHO Portable",
@@ -122,13 +122,13 @@ const PRODUCT_DATA=[
                 name:"Lenovo Think Center",
                 imageURL:"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQEUPYisffzE9UuJoihHb9XPz4mC_cRBcXH6XzVWP679zLhwewpyaz9EjfrQaQ4h9zCMuL4wZx7U0oysvC-2F2FE6tdhH_078SabI7DYCEY&usqp=CAE",
                 price:1000
-            }
+            },
             {
                 id:17,
                 name:"Dell Optiplex",
                 imageURL:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQaSEUty6XDvcu0iik27GQz1HdpfSKg53cgS9Dd4YjRrMq-UljMQMEDcdy-d5WR26GlMznlufCEF3xWpwLyASWvcwn29un9EFnT-5l9Q7cX&usqp=CAE",
                 price:200
-            }
+            },
             {
                 id:18,
                 name:"Apple Mac Studio",
@@ -145,13 +145,13 @@ const PRODUCT_DATA=[
                 name:"Lenovo ThinkPad P17",
                 imageURL:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQxVNqDRm9bSZ_rfOViUdDGCU9Z946FIE1UtymwrkHDO066n9lJsDW-g-7KyEKBNc8TosVKDFphV8muU29-_wMtwKwF0geF6TxRJj5vP9xTp1PIGJNvuNAL9g&usqp=CAE",
                 price:2000
-            }
+            },
             {
                 id:20,
                 name:"Apple Macbook Air",
                 imageURL:"https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRZxZA9gAeVuElj5tDX-z_E8JADzLFjj81w0xIq5ckRa19uDsIJynPUG4adj5AHn7QEhR0LwmkGTxlEGsnh-STXoS6gWtLtBORWPxqcTmuKO7xSsKvJrRtr&usqp=CAE",
                 price:2000
-            }
+            },
             {
                 id:21,
                 name:"Dell Inspiron Mini",
@@ -161,3 +161,5 @@ const PRODUCT_DATA=[
         ]
     }
 ]
+
+export default PRODUCTS;

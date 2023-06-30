@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import "./home.styles.scss";
 
 const Home=()=>{
+  console.log("Setting topics");
   const [topics, setTopics]=useState([
     {
       key:1,
@@ -49,6 +50,7 @@ const Home=()=>{
       location:'/hacking/human/mind'
     },
   ]);
+  console.log("Welcome home");
   return (
     <div className="text-center">
       <Outlet/>
