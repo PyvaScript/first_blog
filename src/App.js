@@ -18,15 +18,15 @@ const App=()=>{
     <Routes>
       <Route path="/" element={ <Nav /> } >
         <Route index element={ <Home /> } />
-        <Route path="/shop" element={ <Shop /> } />
-        <Route path="/ransomware" element={ <Ransomware /> } />
-        <Route path="/quantum-computing" element={ <QuantumComputing /> } />
-        <Route path="/engineering/social" element={ <SocialEngineering /> } />
-        <Route path="/security/zero-trust" element={ <ZeroTrustSecurity /> } />
-        <Route path="/deepfake/technology" element={ <DeepFakeTechnology /> } />
-        <Route path="/hacking/human/mind" element={ <HackingTheHumanMind /> } />
-        <Route path="/authentication" element={ <Authentication /> } />
-        <Route path="/checkout" element={ <Checkout /> } />
+        <Route path="shop/*" element={ <Shop /> } />
+        <Route path="ransomware" element={ <Ransomware /> } />
+        <Route path="quantum-computing" element={ <QuantumComputing /> } />
+        <Route path="engineering/social" element={ <SocialEngineering /> } />
+        <Route path="security/zero-trust" element={ <ZeroTrustSecurity /> } />
+        <Route path="deepfake/technology" element={ <DeepFakeTechnology /> } />
+        <Route path="hacking/human/mind" element={ <HackingTheHumanMind /> } />
+        <Route path="authentication" element={ <Authentication /> } />
+        <Route path="checkout" element={ <Checkout /> } />
       </Route>
     </Routes>
   )
