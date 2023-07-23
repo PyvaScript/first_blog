@@ -1,28 +1,28 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 
-import { getAnalytics } from 'firebase/analytics';
+import { getAnalytics } from "firebase/analytics";
 
 import {
     getAuth,
-    signInWithRedirect,
-    signInWithPopup,
     GoogleAuthProvider,
+    signInWithPopup,
+    signInWithRedirect,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
-} from 'firebase/auth';
+} from "firebase/auth";
 
 import {
     getFirestore,
-    doc,
-    getDoc,
-    setDoc,
     collection,
     writeBatch,
+    doc,
     query,
-    getDocs
-} from 'firebase/firestore';
+    getDoc,
+    getDocs,
+    setDoc,
+} from "firebase/firestore";
 
 const firebaseConfig={
     apiKey:"AIzaSyArIOFInbtG1z5WjJU4zjPiPaYU5Rx0Sug",
@@ -37,18 +37,18 @@ const firebaseConfig={
 // Initialize Firebase
 const app=initializeApp(firebaseConfig);
 
-const analytics=getAnalytics(app)
+const analytics=getAnalytics(app);
 
-const provider=new GoogleAuthProvider();
-provider.setCustomParameters({
-    prompt:"select_account"
+const google_provider=new GoogleAuthProvider();
+google_provider.setCustomParameters({
+    prompt:'select_account',
 });
 
 export const auth=getAuth();
 
-export const signInWithGooglePopup=()=>signInWithPopup(auth, provider);
+export const signInWithGooglePopup=()=>signInWithPopup(auth, google_provider);
 
-export const signInWithGoogleRedirect=()=>signInWithRedirect(auth, provider);
+export const signInWithGoogleRedirect=()=>signInWithRedirect(auth, google_provider);
 
 //db is a singleton which points directly to the database in our console.
 export const db=getFirestore();
@@ -63,57 +63,57 @@ export const addCollectionAndDocuments=async(collectionKey, documentsToAdd)=>{
     });
 
     await batch.commit();
-    console.log("Done");
+    console.log("Batch has been set commited");
 };
 
 export const getCategoriesAndDocuments=async()=>{
-    const collectionRef=collection(db,'categories');
+    const collectionRef=collection(db, 'categories');
     const q=query(collectionRef);
 
     const querySnapshot=await getDocs(q);
     const categoryMap=querySnapshot.docs.reduce((acc, docSnapshot)=>{
         const { title, items }=docSnapshot.data();
-        acc[title]=items;
+        acc[ title ]=items;
         return acc;
     },{});
 
     return categoryMap;
-}
+};
 
 export const createUserDocumentFromAuth=async(userAuth, additionalInformation)=>{
     if(!userAuth) return;
-    console.log("userAuth in firebase.utils - ",userAuth);
-    const userDocRef=doc(db,"users",userAuth.uid);
-    console.log("userDocRef - ",userDocRef);
+    console.log("userAuth is firebase.utils - ", userAuth);
+    const userDocRef=doc(db, 'users', userAuth.uid);
+    console.log("userDocRef - ", userDocRef);
     const userSnapshot=await getDoc(userDocRef);
     console.log("userSnapshot - ",userSnapshot);
-    console.log("Exists - ",userSnapshot.exists());
+    console.log("Exists - ", userSnapshot.exists());
     if(!userSnapshot.exists()){
         try{
             const { displayName, email }=userAuth;
             const createdAt=new Date();
-            await setDoc(userDocRef,{
+            await setDoc(userDocRef, {
                 displayName,
                 email,
                 createdAt,
                 ...additionalInformation
             });
         }catch(error){
-            console.log("Error on user creation - ",error.message);
-        }
+            console.error("Error on user creation - ", error.message);
+        };
     };
     return userDocRef;
 };
 
 export const createAuthUserWithEmailAndPassword=async(email, password)=>{
-    if(!email||!password) return;
+    if(!email || !password) return;
 
     return await createUserWithEmailAndPassword(auth, email, password);
 };
 
-export const signInAuthUserWithEmailAndPassword=async(email, password)=>{
-    if(!email||!password) return;
-
+export const signInAuthUserWithEmailAndPassword=async(email,password)=>{
+    if(!email || !password) return;
+    
     return await signInWithEmailAndPassword(auth, email, password);
 };
 
