@@ -1,10 +1,15 @@
 h1, h2, h3, h4, h5, h6, p{
     color: orange;
-}
+};
 
 .topic-directory-container{
     width: 100%;
     .topic-directory-topic{
         width: 30%;
     }
+};
+
+.orange-link{
+    color: orange;
+    text-decoration: none;
 }

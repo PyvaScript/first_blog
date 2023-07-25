@@ -1,6 +1,6 @@
 const PRODUCTS=[
     {
-        title: 'anti-virus',
+        title: 'ANTI-VIRUS',
         items:[
             {
                 id:1,
@@ -35,7 +35,7 @@ const PRODUCTS=[
         ]
     },
     {
-        title: 'mice',
+        title: 'MICE',
         items: [
             {
                 id:6,
@@ -70,7 +70,7 @@ const PRODUCTS=[
         ]
     },
     {
-        title: 'pads',
+        title: 'MOUSE-PADS',
         items: [
             {
                 id:11,
@@ -105,7 +105,7 @@ const PRODUCTS=[
         ]
     },
     {
-        title: 'keyboards',
+        title: 'KEYBOARDS',
         items: [
             {
                 id:16,
@@ -140,7 +140,7 @@ const PRODUCTS=[
         ]
     },
     {
-        title: "monitors",
+        title: "MONITORS",
         items: [
             {
                 id:21,
@@ -175,7 +175,7 @@ const PRODUCTS=[
         ]
     },
     {
-        title: "Desktops",
+        title: "DESKTOPS",
         items: [
             {
                 id:26,
@@ -210,7 +210,7 @@ const PRODUCTS=[
         ]
     },
     {
-        title: 'laptops',
+        title: 'LAPTOPS',
         items: [
             {
                 id:31,

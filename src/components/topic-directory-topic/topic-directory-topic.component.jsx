@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const TopicDirectoryTopic=({title,imageAlt,imageSRC,location})=>(
     <div className="topic-directory-topic">
-        <Link style={{ textDecoration:"none", color:"orange"}} to={location}>
+        <Link className="orange-link" to={ location }>
             <h2>{ title }</h2>
         </Link>
-        <Link to={location}>
+        <Link to={ location }>
             <img
             src={ imageSRC }
             alt={ imageAlt }
