@@ -5,6 +5,7 @@ import { CartContext } from "../../contexts/cart.context.jsx";
 import { SignOutUser } from '../../utils/firebase/firebase.utils.js';
 import CartIcon from "../../components/cart-icon/cart-icon.component.jsx";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component.jsx";
+import { NavigationContainer } from "./navigation.styles.jsx";
 import "./navigation.styles.scss";
 
 const Nav=()=>{
@@ -12,7 +13,7 @@ const Nav=()=>{
     const { isCartOpen }=useContext(CartContext);
     const signOutHandler=async()=>{await SignOutUser()}
     return (
-        <>
+        <>            
             <div className="nav_container">
                 <div className="nav_item site_logo"></div>
                 <div className="nav_item nav_intro">

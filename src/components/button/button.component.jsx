@@ -1,3 +1,33 @@
+import { BaseButton, GoogleSignInButton, FormResetButton } from "./button.styles.jsx";
+
+export const BUTTON_TYPE_CLASSES={
+    base:'base',
+    google:'google',
+    form_reset:'form_reset',
+};
+
+const getButton=(buttonType=BUTTON_TYPE_CLASSES.base)=>(
+    {
+        [ BUTTON_TYPE_CLASSES.base ]: BaseButton,
+        [ BUTTON_TYPE_CLASSES.google ]: GoogleSignInButton,
+        [ BUTTON_TYPE_CLASSES.form_reset ]: FormResetButton,
+    }[ buttonType ]
+);
+
+const Button=({ children, button_type, ...otherProps })=>{
+    const CustomButton=getButton(button_type);
+    return <CustomButton { ...otherProps }>{ children }</CustomButton>;
+};
+
+export default Button
+
+
+
+
+
+
+
+/*
 import "./button.styles.scss";
 
 const BUTTON_TYPE_CLASSES={
@@ -19,3 +49,4 @@ const Button=({ children, button_type, ...otherProps })=>{
 };
 
 export default Button;
+*/

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from "../../contexts/cart.context.jsx";
-import Button from "../button/button.component.jsx";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component.jsx";
 import CartItem from "../cart-item/cart-item.component.jsx";
 import "./cart-dropdown.styles.scss";
 
@@ -22,7 +22,7 @@ const CartDropdown=()=>{
                     )
                 }
             </div>
-            <Button button_type="signUpFormSubmit" onClick={ goToCheckoutHandler }>Go To Checkout</Button>
+            <Button button_type={ BUTTON_TYPE_CLASSES.base } onClick={ goToCheckoutHandler }>Go To Checkout</Button>
         </div>
     )
 };

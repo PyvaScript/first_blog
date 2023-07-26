@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from "../button/button.component.jsx";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component.jsx";
 import FormInput from "../form-input/form-input.component.jsx";
 import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 
@@ -61,9 +61,9 @@ const SignInForm=()=>{
                     value={ password }
                     required
                 />
-                <Button button_type="signUpFormSubmit" type="submit">Sign In</Button>
-                <Button button_type="google" type="button" onClick={ signInWithGoogle }>Sign in with Google</Button>
-                <Button button_type="signUpFormReset" type="button" onClick={ resetFormFields }>Reset</Button>
+                <Button type="submit">Sign In</Button>
+                <Button button_type={ BUTTON_TYPE_CLASSES.google } type="button" onClick={ signInWithGoogle }>Sign in with Google</Button>
+                <Button button_type={ BUTTON_TYPE_CLASSES.form_reset } type="button" onClick={ resetFormFields }>Reset</Button>
             </form>
         </div>
     );
