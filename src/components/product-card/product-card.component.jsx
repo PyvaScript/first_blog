@@ -1,3 +1,29 @@
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart.context.jsx";
+
+import { ProductCardContainer, ProductCardImage, ProductCardButton, ProductCardFooter } from "./product-card.styles.jsx";
+
+const ProductCard=({ product })=>{
+    const { addCartItem }=useContext(CartContext);
+    const { name, price, imageURL }=product;
+    const addProductToCart=()=>{
+        addCartItem(product);
+    };
+    return (
+        <ProductCardContainer>
+            <ProductCardImage src={ imageURL } alt={ name }/>
+            <ProductCardFooter>
+                <span className="name">{ name }</span>
+                <span className="price">${ price }</span>
+            </ProductCardFooter>
+            <ProductCardButton onClick={ addProductToCart }>Add To Cart</ProductCardButton>
+        </ProductCardContainer>
+    )
+};
+
+export default ProductCard;
+
+/*
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/cart.context.jsx';
 import "./product-card.styles.scss";
@@ -22,3 +48,4 @@ const ProductCard=({ product })=>{
 };
 
 export default ProductCard;
+*/

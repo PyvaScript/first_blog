@@ -1,3 +1,21 @@
+import { TopicDirectoryTopicContainer, TopicDirectoryTopicLink } from "./topic-directory-topic.styles.jsx";
+
+const TopicDirectoryTopic=({ title, imageALT, imageSRC, location })=>(
+    <TopicDirectoryTopicContainer>
+        <TopicDirectoryTopicLink to={ location }>
+            <h2>{ title }</h2>
+        </TopicDirectoryTopicLink>
+        <TopicDirectoryTopicLink to={ location }>
+            <img src={ imageSRC } alt={ imageALT }/>
+        </TopicDirectoryTopicLink>
+    </TopicDirectoryTopicContainer>
+);
+
+export default TopicDirectoryTopic;
+
+
+
+/*
 import "./topic-directory-topic.styles.scss";
 import { Link } from 'react-router-dom';
 
@@ -16,7 +34,7 @@ const TopicDirectoryTopic=({title,imageAlt,imageSRC,location})=>(
 );
 
 export default TopicDirectoryTopic;
-
+*/
 
 
 // import {Component} from 'react';

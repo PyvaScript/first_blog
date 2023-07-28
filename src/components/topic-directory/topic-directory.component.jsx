@@ -1,3 +1,31 @@
+import TopicDirectoryTopic from "../topic-directory-topic/topic-directory-topic.component.jsx";
+
+import { TopicDirectoryContainer } from "./topic-directory.styles.jsx";
+
+const TopicDirectory=({ articleTopics })=>(
+    <TopicDirectoryContainer>
+        {
+            articleTopics.map((topic)=>{
+                return (
+                    <TopicDirectoryTopic
+                        key={ topic.key }
+                        title={ topic.title }
+                        imageSRC={ topic.imageSRC }
+                        imageALT={ topic.alt }
+                        location={ topic.location }
+                    />
+                )
+            })
+        }
+    </TopicDirectoryContainer>
+);
+
+export default TopicDirectory;
+
+
+
+
+/*
 import "./topic-directory.styles.scss";
 import TopicDirectoryTopic from '../topic-directory-topic/topic-directory-topic.component.jsx';
 
@@ -12,6 +40,7 @@ const TopicDirectory = ({articleTopics})=>(
 );
 
 export default TopicDirectory;
+*/
 
 
 

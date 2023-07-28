@@ -1,8 +1,12 @@
 import { useState } from "react";
+import Button, { BUTTON_TYPE_CLASSES } from "../../../components/button/button.component.jsx";
+import FormInput from "../../../components/form-input/form-input.component.jsx";
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../../utils/firebase/firebase.utils";
+
+
 import "./sign-up-form.styles.scss";
-import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component.jsx";
-import FormInput from "../form-input/form-input.component.jsx";
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+
+import { AuthenticationFormContainer, AuthenticationForm } from "../authentication.styles.jsx";
 
 const defaultFormFields={
     displayName:"",
@@ -47,10 +51,10 @@ const SignUpForm=()=>{
     };
 
     return (
-        <div className="sign_up_container">
+        <AuthenticationFormContainer>
             <h2>Don't have an account?</h2>
             <span className="sign_up_form_subheading">Sign up with your email and password</span>
-            <form className="sign_up_form" onSubmit={ handleSubmit }>
+            <AuthenticationForm onSubmit={ handleSubmit }>
                 <FormInput 
                     label="Display Name"
                     type="text"
@@ -87,8 +91,8 @@ const SignUpForm=()=>{
                 />
                 <Button type="submit">Sign Up</Button>
                 <Button button_type={ BUTTON_TYPE_CLASSES.form_reset } type="button" onClick={ resetFormFields }>Reset</Button>
-            </form>
-        </div>
+            </AuthenticationForm>
+        </AuthenticationFormContainer>
     );
 };
 

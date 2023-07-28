@@ -1,19 +1,21 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from "../../contexts/cart.context.jsx";
-import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component.jsx";
+import Button from "../button/button.component.jsx";
 import CartItem from "../cart-item/cart-item.component.jsx";
-import "./cart-dropdown.styles.scss";
+import { CartDropdownContainer, CartItems, EmptyMessage } from "./cart-dropdown.styles.jsx";
+//import "./cart-dropdown.styles.scss";
 
 const CartDropdown=()=>{
-    const { cartItems }=useContext(CartContext);
+    const { cartItems, isCartOpen, setIsCartOpen }=useContext(CartContext);
     const navigate=useNavigate();
     const goToCheckoutHandler=()=>{
+        setIsCartOpen(!isCartOpen);
         navigate('/checkout')
     }
     return (
-        <div className="cart-dropdown-container">
-            <div className="cart-items">
+        <CartDropdownContainer>
+            <CartItems>
                 {
                     cartItems.map(
                         (cart_item)=>(
@@ -21,9 +23,9 @@ const CartDropdown=()=>{
                         )
                     )
                 }
-            </div>
-            <Button button_type={ BUTTON_TYPE_CLASSES.base } onClick={ goToCheckoutHandler }>Go To Checkout</Button>
-        </div>
+            </CartItems>
+            <Button onClick={ goToCheckoutHandler }>Go To Checkout</Button>
+        </CartDropdownContainer>
     )
 };
 

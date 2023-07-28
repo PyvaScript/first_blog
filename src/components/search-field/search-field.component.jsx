@@ -15,8 +15,6 @@ export default SearchField;
 
 
 
-
-
 // import {Component} from 'react';
 // import "./search-field.styles.css";
 
