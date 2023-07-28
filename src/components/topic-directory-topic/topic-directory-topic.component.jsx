@@ -1,4 +1,4 @@
-import { TopicDirectoryTopicContainer, TopicDirectoryTopicLink } from "./topic-directory-topic.styles.jsx";
+import { TopicDirectoryTopicContainer, TopicDirectoryTopicLink, TopicImage } from "./topic-directory-topic.styles.jsx";
 
 const TopicDirectoryTopic=({ title, imageALT, imageSRC, location })=>(
     <TopicDirectoryTopicContainer>
@@ -6,7 +6,7 @@ const TopicDirectoryTopic=({ title, imageALT, imageSRC, location })=>(
             <h2>{ title }</h2>
         </TopicDirectoryTopicLink>
         <TopicDirectoryTopicLink to={ location }>
-            <img src={ imageSRC } alt={ imageALT }/>
+            <TopicImage src={ imageSRC } alt={ imageALT }/>
         </TopicDirectoryTopicLink>
     </TopicDirectoryTopicContainer>
 );

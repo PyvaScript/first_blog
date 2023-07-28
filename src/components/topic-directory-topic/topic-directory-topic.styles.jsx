@@ -13,8 +13,11 @@ export const TopicDirectoryTopicLink=styled(Link)`
     h1, h2, h3, h4, h5, h6, p{
         cursor: pointer;
     }
+`;
 
-    img{
-        cursor: pointer;
-    }
+export const TopicImage=styled.img`
+    cursor: pointer;
+    width: auto;
+    height: 18rem;
+    margin-bottom: 2rem;
 `;

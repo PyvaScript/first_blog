@@ -82,12 +82,8 @@ export const getCategoriesAndDocuments=async()=>{
 
 export const createUserDocumentFromAuth=async(userAuth, additionalInformation)=>{
     if(!userAuth) return;
-    console.log("userAuth is firebase.utils - ", userAuth);
     const userDocRef=doc(db, 'users', userAuth.uid);
-    console.log("userDocRef - ", userDocRef);
     const userSnapshot=await getDoc(userDocRef);
-    console.log("userSnapshot - ",userSnapshot);
-    console.log("Exists - ", userSnapshot.exists());
     if(!userSnapshot.exists()){
         try{
             const { displayName, email }=userAuth;
