@@ -18,7 +18,7 @@ const CheckoutProduct=({ product })=>{
                 </TextContainer>
                 <TextContainer>
                     <TextContainerInner>
-                        <span className="quantity-adjust-arrow" onclick={ ()=>{ addCartItem( product ) } }>↑</span>
+                        <span className="quantity-adjust-arrow" onClick={ ()=>{ addCartItem( product ) } }>↑</span>
                         {
                             //<span onClick={ ()=> addCartItem( product )}>&#10094;</span>
                         }
@@ -30,7 +30,7 @@ const CheckoutProduct=({ product })=>{
                     </TextContainerInner>
                 </TextContainer>
                 <TextContainer>
-                    <TextContainerInner>{ price }</TextContainerInner>
+                    <TextContainerInner>${ price }</TextContainerInner>
                 </TextContainer>
                 <TextContainer>
                     <TextContainerInner>
