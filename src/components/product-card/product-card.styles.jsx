@@ -7,6 +7,7 @@ export const ProductCardContainer=styled.div`
     height: 350px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     position: relative;
 
@@ -18,6 +19,8 @@ export const ProductCardContainer=styled.div`
         button{
             opacity: 0.85;
             display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 `;

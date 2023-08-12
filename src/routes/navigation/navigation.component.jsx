@@ -1,16 +1,23 @@
 import { useContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { UserContext } from '../../contexts/user.context.jsx';
+import { useSelector } from "react-redux";
+
+// import { UserContext } from '../../contexts/user.context.jsx';
 import { CartContext } from "../../contexts/cart.context.jsx";
 import { SignOutUser } from '../../utils/firebase/firebase.utils.js';
 import CartIcon from "../../components/cart-icon/cart-icon.component.jsx";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component.jsx";
+import { selectCurrentUser } from "../../redux-store/user/user.selector.js";
+
 import { NavigationContainer } from "./navigation.styles.jsx";
 import "./navigation.styles.scss";
 
 const Nav=()=>{
-    const { currentUser }=useContext(UserContext);
-    const { isCartOpen }=useContext(CartContext);
+    // const { currentUser }=useContext(UserContext);
+    // const { isCartOpen }=useContext(CartContext);
+    const isCartOpen=false;
+    // const currentUser=useSelector((state)=>state.user.currentUser);
+    const currentUser=useSelector(selectCurrentUser);
     const signOutHandler=async()=>{await SignOutUser()}
     return (
         <>            

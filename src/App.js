@@ -1,38 +1,114 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from "./routes/home/home.component.jsx";
-import Authentication from "./routes/authentication/authentication.component.jsx";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Routes, Route } from "react-router-dom";
+
+import { onAuthStateChangedListener, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils.js";
+
+import { setCurrentUser } from "./redux-store/user/user.action.js";
+
 import Nav from "./routes/navigation/navigation.component.jsx";
+import Home from "./routes/home/home.component.jsx";
+import Shop from "./routes/shop/shop.component.jsx";
 import Ransomware from "./routes/ransomware/ransomware.component.jsx";
-import DeepFakeTechnology from "./routes/deepfake/deepfake.technology.component.jsx";
 import QuantumComputing from "./routes/quantum-computing/quantum.computing.component.jsx";
 import SocialEngineering from "./routes/engineering/social/social.engineering.component.jsx";
 import ZeroTrustSecurity from "./routes/security/zero-trust/zero-trust-security.component.jsx";
+import DeepFakeTechnology from "./routes/deepfake/deepfake.technology.component.jsx";
 import HackingTheHumanMind from "./routes/hacking/human/mind/hacking-the-human-mind.component.jsx";
-import Shop from "./routes/shop/shop.component.jsx";
+import Authentication from "./routes/authentication/authentication.component.jsx";
 import Checkout from "./routes/checkout/checkout.component.jsx";
+
 import "./App.css";
 
-
 const App=()=>{
+  const dispatch=useDispatch();
+
+  useEffect(()=>{
+    const unsubscribe=onAuthStateChangedListener((user)=>{
+      if(user) {
+        createUserDocumentFromAuth(user);
+      };
+      dispatch(setCurrentUser(user));
+    });
+
+    return unsubscribe;
+  },[]);
+
   return (
     <Routes>
       <Route path="/" element={ <Nav /> } >
         <Route index element={ <Home /> } />
         <Route path="shop/*" element={ <Shop /> } />
-        <Route path="ransomware" element={ <Ransomware /> } />
-        <Route path="quantum-computing" element={ <QuantumComputing /> } />
-        <Route path="engineering/social" element={ <SocialEngineering /> } />
-        <Route path="security/zero-trust" element={ <ZeroTrustSecurity /> } />
-        <Route path="deepfake/technology" element={ <DeepFakeTechnology /> } />
-        <Route path="hacking/human/mind" element={ <HackingTheHumanMind /> } />
-        <Route path="authentication" element={ <Authentication /> } />
-        <Route path="checkout" element={ <Checkout /> } />
+        <Route path="ransomware/" element={ <Ransomware /> } />
+        <Route path="quantum-computing/" element={ <QuantumComputing /> } />
+        <Route path="engineering/social/" element={ <SocialEngineering /> } />
+        <Route path="security/zero-trust/" element={ <ZeroTrustSecurity /> } />
+        <Route path="deepfake/technology/" element={ <DeepFakeTechnology /> } />
+        <Route path="hacking/human/mind/" element={ <HackingTheHumanMind /> } />
+        <Route path="authentication/" element={ <Authentication /> } />
+        <Route path="checkout/" element={ <Checkout /> } />
       </Route>
     </Routes>
   )
 };
 
 export default App;
+
+
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { Routes, Route } from 'react-router-dom';
+
+// import { onAuthStateChangedListener, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils.js";
+
+// import Home from "./routes/home/home.component.jsx";
+// import Authentication from "./routes/authentication/authentication.component.jsx";
+// import Nav from "./routes/navigation/navigation.component.jsx";
+// import Ransomware from "./routes/ransomware/ransomware.component.jsx";
+// import DeepFakeTechnology from "./routes/deepfake/deepfake.technology.component.jsx";
+// import QuantumComputing from "./routes/quantum-computing/quantum.computing.component.jsx";
+// import SocialEngineering from "./routes/engineering/social/social.engineering.component.jsx";
+// import ZeroTrustSecurity from "./routes/security/zero-trust/zero-trust-security.component.jsx";
+// import HackingTheHumanMind from "./routes/hacking/human/mind/hacking-the-human-mind.component.jsx";
+// import Shop from "./routes/shop/shop.component.jsx";
+// import Checkout from "./routes/checkout/checkout.component.jsx";
+// import { setCurrentUser } from "./redux-store/user/user.action.js";
+
+// import "./App.css";
+
+
+// const App=()=>{
+//   const dispatch=useDispatch();
+
+//   useEffect(()=>{
+//     const unsubscribe=onAuthStateChangedListener((user)=>{
+//       if(user){
+//         createUserDocumentFromAuth(user)
+//       };
+//       dispatch(setCurrentUser(user));
+//     });
+
+//     return unsubscribe;
+//   },[])
+//   return (
+//     <Routes>
+//       <Route path="/" element={ <Nav /> } >
+//         <Route index element={ <Home /> } />
+//         <Route path="shop/*" element={ <Shop /> } />
+//         <Route path="ransomware" element={ <Ransomware /> } />
+//         <Route path="quantum-computing" element={ <QuantumComputing /> } />
+//         <Route path="engineering/social" element={ <SocialEngineering /> } />
+//         <Route path="security/zero-trust" element={ <ZeroTrustSecurity /> } />
+//         <Route path="deepfake/technology" element={ <DeepFakeTechnology /> } />
+//         <Route path="hacking/human/mind" element={ <HackingTheHumanMind /> } />
+//         <Route path="authentication" element={ <Authentication /> } />
+//         <Route path="checkout" element={ <Checkout /> } />
+//       </Route>
+//     </Routes>
+//   )
+// };
+
+// export default App;
 
 
 
