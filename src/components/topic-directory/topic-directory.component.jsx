@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import TopicDirectoryTopic from "../topic-directory-topic/topic-directory-topic.component.jsx";
 
 import { TopicDirectoryContainer } from "./topic-directory.styles.jsx";
@@ -48,6 +50,7 @@ const articleTopics=[
   ];
 
 const TopicDirectory=()=>(
+
     <TopicDirectoryContainer>
         {
             articleTopics.map((topic)=>{
