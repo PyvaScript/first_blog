@@ -1,1 +1,4 @@
-export const selectCategoriesMap=(state)=>state.categories.categoriesMap;
+export const selectCategoriesMap=(state)=>state.categories.categoriesArray
+.reduce((acc, category)=>{const { title, items }=category; acc[ title ]=items; return acc},{});
+
+// export const selectCategoriesMap=(state)=>state.categories.categories;

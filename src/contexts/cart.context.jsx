@@ -5,7 +5,7 @@ const removeItemFromCart=(cartItems, itemToRemove)=>{
 };
 
 const reduceItemInCart=(cartItems, itemToReduce)=>{
-    if(itemToReduce.quantity>1) {
+    if(itemToReduce.quantity>1){
         return cartItems.map((cartItem)=>
             cartItem.id===itemToReduce.id ?
             { ...cartItem, quantity: cartItem.quantity-1 }
@@ -17,32 +17,29 @@ const reduceItemInCart=(cartItems, itemToReduce)=>{
 };
 
 const addItemToCart=(cartItems, itemToAdd)=>{
-    //Search for existing cart item
-    const existingCartItem=cartItems.find(
-        (cartItem)=>cartItem.id===itemToAdd.id
-    );
-    //Match was found
-    if(existingCartItem) {
-        return cartItems.map(
-            (cartItem)=>cartItem.id===itemToAdd.id ?
-            { ...cartItem, quantity:cartItem.quantity+1 }
+    const existingCartItem=cartItems.find((cartItem)=>cartItem.id===itemToAdd.id);
+
+    if(existingCartItem){
+        return cartItems.map((cartItem)=>
+            cartItem.id===itemToAdd.id ?
+            { ...cartItem, quantity: cartItem.quantity+1 }
             : cartItem
         );
     };
-    //No match was found
-    return [ ...cartItems, { ...itemToAdd, quantity:1 } ]
-}
+
+    return [ ...cartItems, { ...itemToAdd, quantity: 1 } ];
+};
 
 export const CartContext=createContext({
-    isCartOpen:false,
-    cartItems:[],
-    itemCount:0,
-    totalOrderCost:0,
+    isCartOpen: false,
+    cartItems: [],
+    itemCount: 0,
+    totalOrderCost: 0,
 });
 
-const CART_ACTION_TYPES={
-    SET_IS_CART_OPEN:"SET_IS_CART_OPEN",
-    SET_CART_ITEMS:"SET_CART_ITEMS"
+export const CART_ACTION_TYPES={
+    SET_IS_CART_OPEN: "SET_IS_CART_OPEN",
+    SET_CART_ITEMS: 'SET_CART_ITEMS',
 };
 
 const cartReducer=(state, action)=>{
@@ -54,64 +51,68 @@ const cartReducer=(state, action)=>{
                 ...state,
                 isCartOpen: payload,
             };
+
         case CART_ACTION_TYPES.SET_CART_ITEMS:
             const { newCartItems, newItemCount, newTotalOrderCost }=payload;
+
             return {
                 ...state,
-                cartItems:newCartItems,
-                itemCount:newItemCount,
-                totalOrderCost:newTotalOrderCost
-            }
+                cartItems: newCartItems,
+                itemCount: newItemCount,
+                totalOrderCost: newTotalOrderCost
+            };
+
         default:
-            throw new Error(`Unhandled type ${ type } in cartReducer`);
+            return state;
     };
 };
 
-const INITIAL_STATE={
-    isCartOpen:false,
-    cartItems:[],
-    itemCount:0,
-    totalOrderCost:0,
+const CART_INITIAL_STATE={
+    isCartOpen: false,
+    cartItems: [],
+    itemCount: 0,
+    totalOrderCost: 0,
 };
 
 export const CartProvider=({ children })=>{
-    const [ state, dispatcher ]=useReducer(cartReducer, INITIAL_STATE);
+
+    const [ state, dispatcher ]=useReducer(cartReducer, CART_INITIAL_STATE);
 
     const { isCartOpen, cartItems, itemCount, totalOrderCost }=state;
 
-    const setIsCartOpen=(isCartOpen)=>{
-        dispatcher({ type:CART_ACTION_TYPES.SET_IS_CART_OPEN, payload:isCartOpen });
+    const setIsCartOpen=(newCartOpenState)=>{
+        dispatcher({ type: CART_ACTION_TYPES.SET_IS_CART_OPEN, payload: newCartOpenState });
     };
 
-    const updateCartItemsReducer=(newCartItems)=>{
-        const newItemCount=newCartItems.reduce((total, cartItem)=>total+cartItem.quantity,0);
+    const updateCartItems=(newCartItems)=>{
+        const newItemCount=newCartItems.reduce((total,item)=>total+item.quantity,0);
 
-        const newTotalOrderCost=newCartItems.reduce((total, cartItem)=>total+cartItem.price*cartItem.quantity,0)
+        const newTotalOrderCost=newCartItems.reduce((total,item)=>total+item.price*item.quantity,0);
 
-        const final_payload={
+        const finalPayload={
             newCartItems,
             newItemCount,
             newTotalOrderCost
         };
 
-        dispatcher({ type:CART_ACTION_TYPES.SET_CART_ITEMS, payload:final_payload });
+        dispatcher({ type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: finalPayload });
     };
 
     const removeCartItem=(itemToRemove)=>{
         const newCartItems=removeItemFromCart(cartItems, itemToRemove);
-        updateCartItemsReducer(newCartItems);
+        updateCartItems(newCartItems);
     };
 
     const reduceCartItem=(itemToReduce)=>{
         const newCartItems=reduceItemInCart(cartItems, itemToReduce);
-        updateCartItemsReducer(newCartItems);
+        updateCartItems(newCartItems);
     };
 
     const addCartItem=(itemToAdd)=>{
         const newCartItems=addItemToCart(cartItems, itemToAdd);
-        updateCartItemsReducer(newCartItems);
+        updateCartItems(newCartItems);
     };
 
-    const value={ isCartOpen, setIsCartOpen, cartItems, removeCartItem, reduceCartItem, addCartItem, itemCount, totalOrderCost };
+    const value={ isCartOpen, setIsCartOpen, cartItems, removeCartItem, reduceCartItem, addCartItem, itemCount, totalOrderCost }
     return <CartContext.Provider value={ value }>{ children }</CartContext.Provider>
-}
+};

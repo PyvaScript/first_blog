@@ -23,7 +23,7 @@ export const CartDropdownContainer=styled.div`
     }
 `;
 
-export const CartEmptyMessage=styled.span`
+export const EmptyCartMessage=styled.span`
     font-size: 18px;
     margin: 50px auto;
     color: purple;
