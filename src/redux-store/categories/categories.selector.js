@@ -9,9 +9,11 @@ export const selectCategories=createSelector(
 
 export const selectCategoriesMap=createSelector(
     [ selectCategories ],
+    // The blow reduce function maintains an object here called acc and adds an object to represent each category as coded below
     (categories)=>categories.reduce((acc, category)=>{
         const { title, items }=category;
         acc[title]=items;
+        console.log("ACC",acc);
         return acc;
     }, {})
 );

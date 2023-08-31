@@ -8,13 +8,8 @@ const loggerMiddleware=(store)=>(next)=>(action)=>{
         return next(action);
     };
 
-    console.log("Type: ",action.type);
-    console.log("Payload: ",action.payload);
-    console.log("Current State: ",store.getState());
-
     next(action);
 
-    console.log("New state: ",store.getState());
 }
 
 const middleWare=[loggerMiddleware];
