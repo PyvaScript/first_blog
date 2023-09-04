@@ -13,7 +13,6 @@ export const selectCategoriesMap=createSelector(
     (categories)=>categories.reduce((acc, category)=>{
         const { title, items }=category;
         acc[title]=items;
-        console.log("ACC",acc);
         return acc;
     }, {})
 );
