@@ -4,7 +4,7 @@ import { createAction } from '../../utils/reducer/reducer.utils.js';
 export const setIsCartOpen=(isCartOpen)=>createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, isCartOpen);
 
 const removeItemFromCart=(cartItems, itemToRemove)=>{
-    return cartItems.filter((cartItem)=>cartItem.id!==itemToRemove);
+    return cartItems.filter((cartItem)=>cartItem.id!==itemToRemove.id);
 };
 
 const reduceItemInCart=(cartItems, itemToReduce)=>{
