@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { fetchCategoriesAsync } from '../../redux-store/categories/categories.action.js';
+import { fetchCategoriesStart } from '../../redux-store/categories/categories.action.js';
+
+// import { fetchCategoriesAsync } from '../../redux-store/categories/categories.action.js';
 
 import CategoriesPreview from '../categories-preview/categories-preview.component.jsx';
 import Category from '../../components/category/category.component.jsx';
@@ -17,7 +19,7 @@ const Shop=()=>{
     const dispatch=useDispatch();
 
     useEffect(()=>{
-        dispatch(fetchCategoriesAsync());
+        dispatch(fetchCategoriesStart());
     }, []);
 
     // useEffect(()=>{
