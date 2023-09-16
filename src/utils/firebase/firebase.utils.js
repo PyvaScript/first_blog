@@ -72,41 +72,27 @@ export const getCategoriesAndDocuments=async()=>{
 
     const querySnapShot=await getDocs(q);
     return querySnapShot.docs.map((docSnapShot)=>docSnapShot.data());
-}
-
-// export const getCategoriesAndDocuments=async()=>{
-//     const collectionRef=collection(db, 'categories');
-//     const q=query(collectionRef);
-
-//     const querySnapshot=await getDocs(q);
-//     const categoryMap=querySnapshot.docs.reduce((acc, docSnapshot)=>{
-//         const { title, items }=docSnapshot.data();
-//         acc[ title ]=items;
-//         return acc;
-//     },{});
-
-//     return categoryMap;
-// };
+};
 
 export const createUserDocumentFromAuth=async(userAuth, additionalInformation)=>{
     if(!userAuth) return;
     const userDocRef=doc(db, 'users', userAuth.uid);
     const userSnapshot=await getDoc(userDocRef);
-    if(!userSnapshot.exists()){
-        try{
-            const { displayName, email }=userAuth;
+    if(!userSnapshot.exists()) {
+        try {
+            const { displayName, email } =userAuth;
             const createdAt=new Date();
             await setDoc(userDocRef, {
                 displayName,
                 email,
                 createdAt,
-                ...additionalInformation
+                ...additionalInformation,
             });
-        }catch(error){
-            console.error("Error on user creation - ", error.message);
+        } catch(error) {
+            console.error('Error on user creation - ',error.message);
         };
     };
-    return userDocRef;
+    return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword=async(email, password)=>{
@@ -124,3 +110,29 @@ export const signInAuthUserWithEmailAndPassword=async(email,password)=>{
 export const SignOutUser=async()=>signOut(auth);
 
 export const onAuthStateChangedListener=(callback)=>onAuthStateChanged(auth, callback);
+
+export const getCurrentUser=()=>{
+    return new Promise((resolve, reject)=>{
+        const unsubscribe=onAuthStateChanged(
+            auth, (userAuth)=>{
+                unsubscribe();
+                resolve(userAuth);
+            },
+            reject
+        );
+    });
+};
+
+// export const getCategoriesAndDocuments=async()=>{
+//     const collectionRef=collection(db, 'categories');
+//     const q=query(collectionRef);
+
+//     const querySnapshot=await getDocs(q);
+//     const categoryMap=querySnapshot.docs.reduce((acc, docSnapshot)=>{
+//         const { title, items }=docSnapshot.data();
+//         acc[ title ]=items;
+//         return acc;
+//     },{});
+
+//     return categoryMap;
+// };

@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
-import { onAuthStateChangedListener, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils.js";
+// import { getCurrentUser, onAuthStateChangedListener, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils.js";
 
-import { setCurrentUser } from "./redux-store/user/user.action.js";
+import { checkUserSession } from "./redux-store/user/user.action.js";
 
 import Nav from "./routes/navigation/navigation.component.jsx";
 import Home from "./routes/home/home.component.jsx";
@@ -24,15 +24,27 @@ const App=()=>{
   const dispatch=useDispatch();
 
   useEffect(()=>{
-    const unsubscribe=onAuthStateChangedListener((user)=>{
-      if(user) {
-        createUserDocumentFromAuth(user);
-      };
-      dispatch(setCurrentUser(user));
-    });
+    dispatch(checkUserSession());
+  }, []);
 
-    return unsubscribe;
-  },[]);
+  useEffect(()=>{
+    dispatch(checkUserSession());
+  }, []);
+
+  // useEffect(()=>{
+  //   getCurrentUser().then((user)=>console.log(user));
+  // }, []);
+
+  // useEffect(()=>{
+  //   const unsubscribe=onAuthStateChangedListener((user)=>{
+  //     if(user) {
+  //       createUserDocumentFromAuth(user);
+  //     };
+  //     dispatch(setCurrentUser(user));
+  //   });
+
+  //   return unsubscribe;
+  // },[]);
 
   return (
     <Routes>

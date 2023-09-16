@@ -1,35 +1,36 @@
 import { useEffect } from 'react';
-import { getRedirectResult } from "firebase/auth";
-import { auth, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
-import SignInForm from "./sign-in-form/sign-in-form.component.jsx";
-import SignUpForm from "./sign-up-form/sign-up-form.component.jsx";
 
-import { SignInOptions, FormOptions } from "./authentication.styles.jsx";
+import { getRedirectResult } from 'firebase/auth';
 
-const Authentication=()=>{
-    useEffect(()=>{
-        async function first_sign_in_call(){
+import { createUserDocumentFromAuth, auth } from '../../utils/firebase/firebase.utils.js';
+
+import { SignInOptions, FormOptions } from './authentication.styles.jsx';
+
+import SignInForm from './sign-in-form/sign-in-form.component.jsx';
+import SignUpForm from './sign-up-form/sign-up-form.component.jsx';
+
+const Authentication=()=> {
+    useEffect(()=> {
+        async function first_sign_in_call() {
             const response=await getRedirectResult(auth);
             const userDocRef=await createUserDocumentFromAuth(response.user);
-        }
+        };
         first_sign_in_call();
-    },[]);
+    }, []);
 
     return (
         <div>
             <SignInOptions>
                 <FormOptions>
-                    <SignInForm/>
-                    <SignUpForm/>
+                    <SignInForm />
+                    <SignUpForm />
                 </FormOptions>
             </SignInOptions>
         </div>
-    )
+    );
 };
 
 export default Authentication;
-
-
 
 /*
 import { useEffect } from 'react';
