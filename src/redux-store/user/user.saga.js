@@ -1,15 +1,26 @@
 import { takeLatest, all, call, put } from 'redux-saga/effects';
 
 import { USER_ACTION_TYPES } from './user.types.js';
-
 import { signInSuccess, signInFailed } from './user.action.js';
 
-import { getCurrentUser, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils.js';
+import { createUserDocumentFromAuth, getCurrentUser, signInWithGooglePopup } from '../../utils/firebase/firebase.utils.js';
 
-export function* getSnapshotFromUserAuth(userAuth, additionalInformation) {
+export function* getUserSnapshotFromAuth(userAuth, additionalInformation) {
     try {
         const userSnapshot=yield call(createUserDocumentFromAuth, userAuth, additionalInformation);
+        // The code below destructures userSnapshot to place values in the expected format for signInSuccess
         yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
+    } catch(error) {
+        yield put(signInFailed(error));
+    };
+};
+
+export function* signInWithGoogle() {
+    try {
+        // We don't need curved braces to use the `signInWithGooglePopup` function. The call() function takes any arguments to be passed to the function being called as subsiquent 
+        // arguments after the function has been called. Arguments are to be separated by commas.
+        const { user }=yield call(signInWithGooglePopup);
+        yield call(getUserSnapshotFromAuth, user);
     } catch(error) {
         yield put(signInFailed(error));
     };
@@ -19,25 +30,23 @@ export function* isUserAuthenticated() {
     try {
         const userAuth=yield call(getCurrentUser);
         if(!userAuth) return;
-        yield call(getSnapshotFromUserAuth, userAuth);
+        yield call(getUserSnapshotFromAuth, userAuth);
     } catch(error) {
         yield put(signInFailed(error));
     };
 };
+
+export function* onGoogleSignInStart() {
+    yield takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle);
+}
 
 export function* onCheckUserSession() {
     yield takeLatest(USER_ACTION_TYPES.CHECK_USER_SESSION, isUserAuthenticated);
 };
 
 export function* userSagas() {
-    yield all([call(onCheckUserSession)]);
+    yield all([call(onCheckUserSession), call(onGoogleSignInStart)]);
 };
-
-
-
-
-
-
 
 // import { takeLatest, all, call, put } from 'redux-saga/effects';
 

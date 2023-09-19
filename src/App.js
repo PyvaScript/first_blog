@@ -27,10 +27,6 @@ const App=()=>{
     dispatch(checkUserSession());
   }, []);
 
-  useEffect(()=>{
-    dispatch(checkUserSession());
-  }, []);
-
   // useEffect(()=>{
   //   getCurrentUser().then((user)=>console.log(user));
   // }, []);
