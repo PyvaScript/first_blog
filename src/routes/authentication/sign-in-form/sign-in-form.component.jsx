@@ -6,9 +6,9 @@ import { AuthenticationFormContainer, AuthenticationForm } from '../authenticati
 import Button, { BUTTON_TYPE_CLASSES } from '../../../components/button/button.component.jsx';
 import FormInput from '../../../components/form-input/form-input.component.jsx';
 
-import { googleSignInStart } from '../../../redux-store/user/user.action.js';
+import { googleSignInStart, emailSignInStart } from '../../../redux-store/user/user.action.js';
 
-import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword } from '../../../utils/firebase/firebase.utils.js';
+// import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword } from '../../../utils/firebase/firebase.utils.js';
 
 const defaultFormFields={
     email: '',
@@ -35,18 +35,36 @@ const SignInForm=()=> {
         dispatch(googleSignInStart());
     };
 
+    // Old code below waits for signInAuthUserWithEmailAndPassword to complete before using the return value
+
+    // const handleSubmit=async(event)=> {
+    //     event.preventDefault();
+
+    //     try {
+    //         const response=await signInAuthUserWithEmailAndPassword(email, password);
+    //         resetFormFields();
+    //     } catch(error) {
+    //         if(error.code==='auth/wrong-password'||error.code==='auth/user-not-found') {
+    //             alert('Incorrect login details');
+    //             return;
+    //         };
+    //         console.error('Error in SignInForm - ',error);
+    //     };
+    // };
+
+    // New code below passes all async await operations to the redux-sagas we have made
     const handleSubmit=async(event)=> {
         event.preventDefault();
 
         try {
-            const response=await signInAuthUserWithEmailAndPassword(email, password);
+            dispatch(emailSignInStart(email, password));
             resetFormFields();
         } catch(error) {
-            if(error.code==='auth/wrong-password'||error.code==='auth/user-not-found') {
-                alert('Incorrect login details');
+            if(error.code==='auth/wrong-password' || error.code==='auth/user-not-found') {
+                alert('Incorrect  login details');
                 return;
             };
-            console.error('Error in SignInForm - ',error);
+            console.log('Error in SignInForm - ',error);
         };
     };
 
