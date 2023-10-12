@@ -1,4 +1,4 @@
-import { BaseButton, GoogleSignInButton, FormResetButton } from "./button.styles.jsx";
+import { BaseButton, GoogleSignInButton, FormResetButton, ButtonSpinner } from "./button.styles.jsx";
 
 export const BUTTON_TYPE_CLASSES={
     base:'base',
@@ -14,9 +14,9 @@ const getButton=(buttonType=BUTTON_TYPE_CLASSES.base)=>(
     }[ buttonType ]
 );
 
-const Button=({ children, button_type, ...otherProps })=>{
+const Button=({ children, button_type, isLoading, ...otherProps })=>{
     const CustomButton=getButton(button_type);
-    return <CustomButton { ...otherProps }>{ children }</CustomButton>;
+    return <CustomButton disabled = { isLoading } { ...otherProps }>{ isLoading ? <ButtonSpinner /> : children }</CustomButton>;
 };
 
 export default Button

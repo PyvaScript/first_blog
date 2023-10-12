@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const BaseButton=styled.button`
+import { SpinnerContainer } from '../spinner/spinner.styles.jsx';
+
+export const BaseButton = styled.button`
     color: white;
     background-color: black;
     width: 100%;
@@ -10,6 +12,7 @@ export const BaseButton=styled.button`
     border-radius: 0.25rem;
     margin: 2rem auto 0 auto;
     padding: 0.5rem 1rem;
+    align-items: center;
 
     &:hover {
         color: orange;
@@ -17,7 +20,7 @@ export const BaseButton=styled.button`
     };
 `
 
-export const GoogleSignInButton=styled(BaseButton)`
+export const GoogleSignInButton = styled(BaseButton)`
     color: white;
     background-color: #0077E3;
 
@@ -26,7 +29,7 @@ export const GoogleSignInButton=styled(BaseButton)`
     }
 `
 
-export const FormResetButton=styled(BaseButton)`
+export const FormResetButton = styled(BaseButton)`
     color: red;
     background-color: #F0F0F0;
 
@@ -34,4 +37,9 @@ export const FormResetButton=styled(BaseButton)`
         color: red;
         border: none;
     }
+`
+
+export const ButtonSpinner = styled(SpinnerContainer)`
+    height: 30px;
+    width: 30px;
 `
